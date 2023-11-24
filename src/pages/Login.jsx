@@ -4,11 +4,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
-import axios from "axios";
 
 
 const Login = () => {
-    document.title = "SIGN IN";
+    document.title = "LOGIN";
     const [showPassword, setShowPassword] = useState(false);
     const { loginEmailPassword, googleLogin, setLoading, setGoogleLoginAttempt } = useContext(AuthContext);
     const [credentialsError, setCredentialsError] = useState(false);
@@ -19,24 +18,24 @@ const Login = () => {
 
     const handleLogin = e => {
         e.preventDefault();
-        const toastId = toast.loading('Signing in...');
+        const toastId = toast.loading('Logging in...');
         setShowPassword(false);
         setCredentialsError(false);
 
-        const form = new FormData(e.currentTarget);
-        const email = form.get('email');
-        const password = form.get('password');
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
 
         loginEmailPassword(email, password)
             .then(() => {
-                axios.post('https://chefs-domain-server.vercel.app/jwt', { email }, { withCredentials: true })
-                    .then(() => { })
-                toast.success('Signed in successfully', { id: toastId });
+                // axios.post('https://chefs-domain-server.vercel.app/jwt', { email }, { withCredentials: true })
+                //     .then(() => { })
+                toast.success('Logged in successfully', { id: toastId });
                 navigate(state || '/');
             })
 
             .catch(() => {
-                toast.error('Sign in failed', { id: toastId });
+                toast.error('Login failed', { id: toastId });
                 setCredentialsError(true);
                 setLoading(false);
             })
@@ -44,17 +43,17 @@ const Login = () => {
 
     const handleGoogle = e => {
         e.preventDefault();
-        const toastId = toast.loading('Signing in...');
+        const toastId = toast.loading('Logging in...');
         googleLogin()
             .then(() => {
                 setGoogleLoginAttempt(true);
                 navigate(state || '/');
-                toast.success('Signed in successfully', { id: toastId });
+                toast.success('Logged in successfully', { id: toastId });
             })
             .catch(() => {
-                toast.error('Sign in failed', { id: toastId });
-                setGoogleLoginAttempt(false);
+                toast.error('Login failed', { id: toastId });
                 setLoading(false);
+                setGoogleLoginAttempt(false);
             })
     }
 
@@ -80,7 +79,7 @@ const Login = () => {
                             <button className='px-5 py-2 bg-primary rounded text-white active:scale-95 transition-transform w-full font-medium mb-3'>Sign In</button>
                             <div className="flex flex-wrap justify-center gap-1 text-sm font-medium">
                                 <p className="text-center">Don&apos;t have an account?</p>
-                                <Link className="text-primary underline" to='/register'>Sign Up</Link>
+                                <Link className="text-primary underline" to='/register'>Register</Link>
                             </div>
                             <div className="max-w-[90%] w-[400px]">
                                 <div className="flex items-center gap-2 my-6">

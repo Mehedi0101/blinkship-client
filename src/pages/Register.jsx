@@ -8,6 +8,7 @@ import { AiOutlineEye } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
     document.title = "CREATE AN ACCOUNT";
@@ -19,6 +20,7 @@ const Register = () => {
     const [alreadyExistError, setAlreadyExistError] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const { state } = useLocation();
+    const axiosPublic = useAxiosPublic();
 
     const handleRegister = e => {
         e.preventDefault();
@@ -57,19 +59,31 @@ const Register = () => {
             .then(res => {
                 if (res.data.success) {
                     const image = res?.data?.data?.url;
-                    console.log(name, email, role, image, password);
                     signUpEmailPassword(email, password)
                         .then(() => {
-                            toast.success('Account created successfully', { id: toastId });
-
                             updateProfile(auth.currentUser, { displayName: name, photoURL: image })
                                 .then(() => { })
                                 .catch(() => { })
 
-                            logout()
-                                .then(() => {
-                                    navigate('/login');
+                            const userData = { email, name, image, role };
+
+                            axiosPublic.post('/users', userData)
+                                .then(res => {
+                                    if (res.data.insertedId) {
+                                        toast.success('Account created successfully', { id: toastId });
+                                    }
+
+                                    logout()
+                                        .then(() => {
+                                            navigate('/login');
+                                        })
                                 })
+
+                                .catch(() => {
+                                    toast.error('Account creation failed', { id: toastId });
+                                })
+
+                            logout();
                         })
 
                         .catch(error => {

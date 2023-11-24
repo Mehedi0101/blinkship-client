@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import Proptypes from 'prop-types';
 import auth from '../configs/firebase.config';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import axios from 'axios';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 export const AuthContext = createContext();
 const googleProvider = new GoogleAuthProvider();
@@ -12,22 +12,38 @@ const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [googleLoginAttempt, setGoogleLoginAttempt] = useState(false);
+    const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             setCurrentUser(user);
-            console.log(user);
-            // if (googleLoginAttempt && user) {
-            //     axios.post('https://chefs-domain-server.vercel.app/jwt', { email: user?.email }, { withCredentials: true })
-            //         .then(() => {
-            //             setGoogleLoginAttempt(false)
-            //         })
-            // }
+            if (googleLoginAttempt && user) {
+
+                const userData = {
+                    email: user.email,
+                    name: user.displayName,
+                    image: user.photoURL,
+                    role: 'user'
+                }
+
+                console.log(userData);
+
+                axiosPublic.post('/users', userData)
+                    .then(res => {
+                        console.log(res.data);
+                        setGoogleLoginAttempt(false);
+                    })
+
+                // axios.post('https://chefs-domain-server.vercel.app/jwt', { email: user?.email }, { withCredentials: true })
+                //     .then(() => {
+                //         setGoogleLoginAttempt(false)
+                //     })
+            }
             setLoading(false);
         })
         return () => unsubscribe();
 
-    }, [googleLoginAttempt])
+    }, [googleLoginAttempt, axiosPublic])
 
     const signUpEmailPassword = (email, password) => {
         setLoading(true);
@@ -41,8 +57,8 @@ const AuthProvider = ({ children }) => {
 
     const logoutUser = () => {
         setLoading(true);
-        axios.post('https://chefs-domain-server.vercel.app/logout', { email: currentUser.email }, { withCredentials: true })
-            .then(() => { })
+        // axios.post('https://chefs-domain-server.vercel.app/logout', { email: currentUser.email }, { withCredentials: true })
+        //     .then(() => { })
         return signOut(auth);
     }
 
