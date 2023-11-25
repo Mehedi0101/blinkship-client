@@ -2,13 +2,46 @@ import useGetParcelData from "../../hooks/useGetParcelData";
 import { FaPenToSquare } from "react-icons/fa6";
 import { FaTrashAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const MyParcels = () => {
-    const { parcelData } = useGetParcelData();
+    const { parcelData, refetch } = useGetParcelData();
     const navigate = useNavigate();
+    const axiosSecure = useAxiosSecure();
 
     const handleUpdateParcel = id => {
         navigate(`/dashboard/update-parcel/${id}`);
+    }
+
+    const handleDeleteBooking = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, remove it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/parcels/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch();
+                        }
+                    })
+                    .catch(() => {
+                        toast.error('Something went wrong');
+                    })
+            }
+        });
     }
 
     return (
@@ -62,7 +95,7 @@ const MyParcels = () => {
                                     <button onClick={() => handleUpdateParcel(parcel?._id)} className="p-2 bg-primary text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'pending' ? true : false}><FaPenToSquare /></button>
                                 </td>
                                 <td>
-                                    <button className="p-2 bg-red-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'pending' ? true : false}><FaTrashAlt /></button>
+                                    <button onClick={() => handleDeleteBooking(parcel?._id)} className="p-2 bg-red-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'pending' ? true : false}><FaTrashAlt /></button>
                                 </td>
                                 <td>
                                     <button className="p-2 bg-fuchsia-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'delivered' ? true : false}>Review</button>

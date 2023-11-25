@@ -3,12 +3,14 @@ import useGetUserData from "../../hooks/useGetUserData";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import moment from "moment/moment";
+import { useNavigate } from "react-router-dom";
 
 const BookParcel = () => {
     const { userData } = useGetUserData();
     const [weight, setWeight] = useState("");
     const [servicePrice, setServicePrice] = useState(0);
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const handleWeight = e => {
         e.preventDefault();
@@ -56,8 +58,8 @@ const BookParcel = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Service Booked Successfully', { id: toastId });
-                    form.reset();
                     setServicePrice(0);
+                    navigate('/dashboard/my-parcels');
                 }
             })
             .catch(() => {
