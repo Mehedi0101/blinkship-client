@@ -76,7 +76,7 @@ const Navbar = () => {
                                         <div className={`absolute top-[60px] right-0 flex flex-col gap-3 text-white bg-[#000000BB] p-8 rounded z-10 ${!showUser && 'hidden'}`}>
                                             <p onClick={() => { setShowUser(false) }} className="mb-3 flex gap-2"><span className="font-bold">USER: </span>{currentUser.displayName}</p>
                                             <div className="flex gap-2">
-                                                <Link to='/user-profile' onClick={() => setShowUser(false)}><button className="px-5 py-2 font-bold bg-white text-primary active:scale-95 transition-all">DASHBOARD</button></Link>
+                                                <Link to='/dashboard' onClick={() => setShowUser(false)}><button className="px-5 py-2 font-bold bg-white text-primary active:scale-95 transition-all">DASHBOARD</button></Link>
 
                                                 <Link to='/login'><button onClick={() => { handleLogout(); setShowUser(false) }} className="px-5 py-2 font-bold bg-primary text-white active:scale-95 transition-all">LOGOUT</button></Link>
                                             </div>
@@ -112,7 +112,7 @@ const Navbar = () => {
                                 <div className={`flex absolute top-[60px] right-5 md:right-10 flex-col md:gap-3 gap-1 text-white bg-[#000000BB] sm:p-8 py-8 px-4 rounded z-10 ${!showUser && 'hidden'} max-w-full ml-5`}>
                                     <p onClick={() => { setShowUser(false) }} className="mb-3 hidden gap-2 min-[260px]:flex"><span className="font-bold">USER: </span>{currentUser.displayName}</p>
                                     <div className="flex gap-2 flex-wrap">
-                                        <Link onClick={() => setShowUser(false)} className="w-full block" to='/user-profile'><button className="px-5 py-2 font-bold bg-white text-primary active:scale-95 transition-all w-full block">PROFILE</button></Link>
+                                        <Link onClick={() => setShowUser(false)} className="w-full block" to='/dashboard'><button className="px-5 py-2 font-bold bg-white text-primary active:scale-95 transition-all w-full block">PROFILE</button></Link>
 
                                         <Link className="w-full block" to='/login'><button onClick={() => { handleLogout(); setShowUser(false) }} className="px-5 py-2 font-bold bg-primary text-white active:scale-95 transition-all w-full block">SIGN OUT</button></Link>
                                     </div>

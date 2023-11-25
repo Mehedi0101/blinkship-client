@@ -12,8 +12,7 @@ import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Register = () => {
     document.title = "CREATE AN ACCOUNT";
-    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGE_HOSTING_KEY}`;
     const { signUpEmailPassword, logout, googleLogin, setLoading, setGoogleLoginAttempt } = useContext(AuthContext);
     const navigate = useNavigate();
     const [passwordError, setPasswordError] = useState('');

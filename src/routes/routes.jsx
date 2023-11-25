@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import DashBoard from "../layouts/DashBoard";
+import PrivateRoute from "./PrivateRoute";
+import MyProfile from "../pages/user-dashboard/MyProfile";
 
 const routes = createBrowserRouter([
     {
@@ -25,8 +27,15 @@ const routes = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard',
-        element: <DashBoard></DashBoard>
+        path: 'dashboard',
+        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+        children: [
+            // user routes
+            {
+                path: 'my-profile',
+                element: <MyProfile></MyProfile>
+            }
+        ]
     }
 ])
 
