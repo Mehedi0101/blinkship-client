@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import DashBoard from "../layouts/DashBoard";
 import PrivateRoute from "./PrivateRoute";
 import MyProfile from "../pages/user-dashboard/MyProfile";
+import BookParcel from "../pages/user-dashboard/BookParcel";
 
 const routes = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const routes = createBrowserRouter([
             {
                 path: 'my-profile',
                 element: <MyProfile></MyProfile>
+            },
+            {
+                path: 'book-parcel',
+                element: <BookParcel></BookParcel>
             }
         ]
     }
