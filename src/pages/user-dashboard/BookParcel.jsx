@@ -52,12 +52,12 @@ const BookParcel = () => {
 
         const parcelInfo = { sender, email, senderPhone, parcelType, weight, receiver, receiverPhone, deliveryAddress, requestedDate, longitude, latitude, price, status, approximateDate, bookingDate, deliveryManId }
 
-        console.log(parcelInfo);
-
         axiosPublic.post('/parcels', parcelInfo)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Service Booked Successfully', { id: toastId });
+                    form.reset();
+                    setServicePrice(0);
                 }
             })
             .catch(() => {
