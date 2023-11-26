@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 
 const BookParcel = () => {
+    document.title = "Book Parcel";
     const { userData } = useGetUserData();
     const [weight, setWeight] = useState("");
     const [servicePrice, setServicePrice] = useState(0);

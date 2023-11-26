@@ -5,6 +5,7 @@ import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 
 const MyReviews = () => {
+    document.title = "My Reviews";
     const { userData } = useGetUserData();
     const axiosSecure = useAxiosSecure();
     const [reviews, setReviews] = useState([]);

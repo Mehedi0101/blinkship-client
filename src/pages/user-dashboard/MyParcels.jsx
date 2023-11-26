@@ -7,6 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
 const MyParcels = () => {
+    document.title = "My Parcels";
     const { parcelData, refetch } = useGetParcelData();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();

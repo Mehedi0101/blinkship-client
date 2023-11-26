@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const UpdateParcel = () => {
+    document.title = "Update Booking";
     const axiosSecure = useAxiosSecure();
     const { id: parcelId } = useParams();
     const [previousValues, setPreviousValues] = useState({});

@@ -9,6 +9,7 @@ import axios from "axios";
 import useGetUserData from "../../hooks/useGetUserData";
 
 const MyProfile = () => {
+    document.title = "My Profile";
     const { currentUser } = useContext(AuthContext);
     const { userData, refetch } = useGetUserData();
     const [updateStatus, setUpdateStatus] = useState(false);

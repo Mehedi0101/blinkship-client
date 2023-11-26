@@ -3,6 +3,7 @@ import useGetAllParcels from "../../hooks/useGetAllParcels";
 import { MdManageAccounts } from "react-icons/md";
 
 const AllParcels = () => {
+    document.title = "All Parcels";
     const { parcels } = useGetAllParcels();
     const navigate = useNavigate();
 

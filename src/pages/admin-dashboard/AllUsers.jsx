@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
 const AllUsers = () => {
+    document.title = "All Users";
     const { users, refetch } = useGetAllUsers();
     const axiosSecure = useAxiosSecure();
 

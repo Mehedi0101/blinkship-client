@@ -1,6 +1,7 @@
 import useGetAllDeliveryMen from "../../hooks/useGetAllDeliveryMen";
 
 const AllDeliveryMen = () => {
+    document.title = "All Deliverymen";
     const { deliveryMen } = useGetAllDeliveryMen();
 
     return (

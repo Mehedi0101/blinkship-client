@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const MyDeliveryList = () => {
+    document.title = "My Delivery List";
     const { userData } = useGetUserData();
     const { deliveryList, refetch } = useGetDeliveryList(userData._id);
     const axiosSecure = useAxiosSecure();

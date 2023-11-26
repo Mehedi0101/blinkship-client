@@ -5,6 +5,7 @@ import useGetAllDeliveryMen from "../../hooks/useGetAllDeliveryMen";
 import toast from "react-hot-toast";
 
 const ManageParcel = () => {
+    document.title = "Manage Parcel";
     const axiosSecure = useAxiosSecure();
     const { id: parcelId } = useParams();
     const [parcelData, setParcelData] = useState({});

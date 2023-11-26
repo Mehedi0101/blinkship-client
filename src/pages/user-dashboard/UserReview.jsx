@@ -6,6 +6,7 @@ import moment from "moment";
 import Swal from "sweetalert2";
 
 const UserReview = () => {
+    document.title = "Review";
     const { id: parcelId } = useParams();
     const [parcelData, setParcelData] = useState({});
     const axiosSecure = useAxiosSecure();
@@ -68,12 +69,24 @@ const UserReview = () => {
                     <form onSubmit={handleRateService} className="xl:p-14 lg:p-12 md:p-10 p-8 border rounded text-sm md:text-base max-w-[90%] mx-auto">
                         <h2 className="font-bold text-3xl md:text-4xl mb-10 font-secondary">Rate Our Service</h2>
 
-                        <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8" type="number" min={1} max={5} name="rating" id="rating" placeholder="Rating (1-5)" required />
+                        <label className="font-semibold" htmlFor="sender">User:</label><br />
+                        <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8 mt-2" type="text" defaultValue={userData?.name} name="sender" id="sender" required disabled />
                         <br />
 
-                        <div className={`border-2 font-medium py-1 max-w-full w-[400px] mb-8`}>
+                        <img className="w-20 h-20 rounded-full object-cover mb-8" src={userData?.image} alt="" />
+
+                        <label className="font-semibold" htmlFor="rating">Rating:</label><br />
+                        <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8 mt-2" type="number" min={1} max={5} name="rating" id="rating" placeholder="Rating (1-5)" required />
+                        <br />
+
+                        <label className="font-semibold" htmlFor="feedback">Feedback:</label><br />
+                        <div className={`border-2 font-medium py-1 max-w-full w-[400px] mb-8 mt-2`}>
                             <textarea className={`outline-none px-2 py-1 w-full resize-none placeholder:font-medium bg-transparent`} name="feedback" id="feedback" cols="30" rows="10" placeholder="Feedback about our service" required></textarea>
                         </div>
+
+                        <label className="font-semibold" htmlFor="deliveryManId">Delivery Man ID:</label><br />
+                        <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8 mt-2" type="text" defaultValue={parcelData?.deliveryManId} name="deliveryManId" id="deliveryManId" required disabled />
+                        <br />
 
                         <button className='px-5 py-2 bg-primary rounded text-white active:scale-95 transition-transform w-full font-medium mb-3'>Rate Us</button>
                     </form>
