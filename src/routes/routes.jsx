@@ -14,6 +14,7 @@ import Statistics from "../pages/admin-dashboard/Statistics";
 import AllParcels from "../pages/admin-dashboard/AllParcels";
 import ManageParcel from "../pages/admin-dashboard/ManageParcel";
 import AllDeliveryMen from "../pages/admin-dashboard/AllDeliveryMen";
+import AllUsers from "../pages/admin-dashboard/AllUsers";
 
 const routes = createBrowserRouter([
     {
@@ -79,6 +80,10 @@ const routes = createBrowserRouter([
             {
                 path: 'all-deliverymen',
                 element: <AllDeliveryMen></AllDeliveryMen>
+            },
+            {
+                path: 'all-users',
+                element: <AllUsers></AllUsers>
             }
         ]
     }
