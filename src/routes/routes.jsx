@@ -17,6 +17,7 @@ import AllDeliveryMen from "../pages/admin-dashboard/AllDeliveryMen";
 import AllUsers from "../pages/admin-dashboard/AllUsers";
 import MyDeliveryList from "../pages/deliveryman-dashboard/MyDeliveryList";
 import UserReview from "../pages/user-dashboard/UserReview";
+import MyReviews from "../pages/deliveryman-dashboard/MyReviews";
 
 const routes = createBrowserRouter([
     {
@@ -98,6 +99,10 @@ const routes = createBrowserRouter([
                 path: 'my-delivery-list',
                 element: <MyDeliveryList></MyDeliveryList>
             },
+            {
+                path: 'my-reviews',
+                element: <MyReviews></MyReviews>
+            }
         ]
     }
 ])
