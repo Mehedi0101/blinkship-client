@@ -88,7 +88,7 @@ const MyParcels = () => {
                                 <td>
                                     {parcel?.deliveryManId}
                                 </td>
-                                <td className={`${parcel?.status === 'pending' ? 'text-yellow-600' : ""} ${parcel?.status === 'on the way' ? 'text-fuchsia-600' : ""} ${parcel?.status === 'delivered' ? 'text-green-600' : ""}`}>
+                                <td className={`${parcel?.status === 'pending' ? 'text-yellow-600' : ""} ${parcel?.status === 'on the way' ? 'text-fuchsia-600' : ""} ${parcel?.status === 'delivered' ? 'text-green-600' : ""} ${parcel?.status === 'cancelled' ? 'text-red-600' : ""}`}>
                                     {parcel?.status}
                                 </td>
                                 <td>

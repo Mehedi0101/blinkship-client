@@ -13,6 +13,9 @@ const DashboardRedirect = () => {
         else if (userType === 'admin') {
             navigate('/dashboard/statistics');
         }
+        else if (userType === 'deliveryMen') {
+            navigate('/dashboard/my-delivery-list');
+        }
     }, [navigate, userType])
 
 };

@@ -15,6 +15,7 @@ import AllParcels from "../pages/admin-dashboard/AllParcels";
 import ManageParcel from "../pages/admin-dashboard/ManageParcel";
 import AllDeliveryMen from "../pages/admin-dashboard/AllDeliveryMen";
 import AllUsers from "../pages/admin-dashboard/AllUsers";
+import MyDeliveryList from "../pages/deliveryman-dashboard/MyDeliveryList";
 
 const routes = createBrowserRouter([
     {
@@ -84,7 +85,14 @@ const routes = createBrowserRouter([
             {
                 path: 'all-users',
                 element: <AllUsers></AllUsers>
-            }
+            },
+
+
+            // deliveryman routes
+            {
+                path: 'my-delivery-list',
+                element: <MyDeliveryList></MyDeliveryList>
+            },
         ]
     }
 ])
