@@ -29,6 +29,7 @@ const Register = () => {
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
+        const phone = form.phone.value;
         const password = form.password.value;
         const role = form.role.value;
 
@@ -64,7 +65,11 @@ const Register = () => {
                                 .then(() => { })
                                 .catch(() => { })
 
-                            const userData = { email, name, image, role };
+                            let userData = { email, name, phone, image, role };
+
+                            if (role === 'deliveryMen') {
+                                userData = { email, name, phone, image, role, parcelCount: 0, review: 0 }
+                            }
 
                             axiosPublic.post('/users', userData)
                                 .then(res => {
@@ -123,9 +128,13 @@ const Register = () => {
                             <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8" type="text" name="name" id="name" placeholder="Name" required />
                             <br />
                             <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8" type="email" name="email" id="email" placeholder="Email" required />
+                            <br />
                             {
                                 alreadyExistError && <p className="text-red-500 text-xs -mt-8 max-w-full w-[400px]">Email is already in use</p>
                             }
+
+                            <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px] mb-8" type="text" name="phone" id="phone" placeholder="Contact no." required />
+                            <br />
 
                             <div className="mb-8 relative">
                                 <input className="outline-none border-b-2 font-medium placeholder:font-medium py-1 max-w-full w-[400px]" type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" required />

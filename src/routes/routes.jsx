@@ -9,6 +9,11 @@ import MyProfile from "../pages/user-dashboard/MyProfile";
 import BookParcel from "../pages/user-dashboard/BookParcel";
 import MyParcels from "../pages/user-dashboard/MyParcels";
 import UpdateParcel from "../pages/user-dashboard/UpdateParcel";
+import DashboardRedirect from "../components/dashboard/DashboardRedirect";
+import Statistics from "../pages/admin-dashboard/Statistics";
+import AllParcels from "../pages/admin-dashboard/AllParcels";
+import ManageParcel from "../pages/admin-dashboard/ManageParcel";
+import AllDeliveryMen from "../pages/admin-dashboard/AllDeliveryMen";
 
 const routes = createBrowserRouter([
     {
@@ -33,6 +38,12 @@ const routes = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children: [
+            {
+                path: '/dashboard/',
+                element: <DashboardRedirect></DashboardRedirect>
+            },
+
+
             // user routes
             {
                 path: 'my-profile',
@@ -49,6 +60,25 @@ const routes = createBrowserRouter([
             {
                 path: 'update-parcel/:id',
                 element: <UpdateParcel></UpdateParcel>
+            },
+
+
+            // admin routes
+            {
+                path: 'statistics',
+                element: <Statistics></Statistics>
+            },
+            {
+                path: 'all-parcels',
+                element: <AllParcels></AllParcels>
+            },
+            {
+                path: 'manage-parcel/:id',
+                element: <ManageParcel></ManageParcel>
+            },
+            {
+                path: 'all-deliverymen',
+                element: <AllDeliveryMen></AllDeliveryMen>
             }
         ]
     }

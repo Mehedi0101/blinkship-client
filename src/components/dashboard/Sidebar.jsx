@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useDetermineUserType from "../../hooks/useDetermineUserType";
 import { useEffect, useState } from "react";
 import deliveryMenLinks from "../../links/deliveryMenLinks";
+import adminLinks from "../../links/adminLinks";
 
 const Sidebar = () => {
     const [links, setLinks] = useState(<></>);
@@ -15,6 +16,9 @@ const Sidebar = () => {
         }
         else if (userType === 'deliveryMen') {
             setLinks(deliveryMenLinks);
+        }
+        else if (userType === 'admin') {
+            setLinks(adminLinks);
         }
     }, [userType])
 

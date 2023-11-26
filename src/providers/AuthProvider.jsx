@@ -17,12 +17,14 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             setCurrentUser(user);
+            console.log(user);
             if (googleLoginAttempt && user) {
 
                 const userData = {
                     email: user.email,
                     name: user.displayName,
                     image: user.photoURL,
+                    phone: 'N/A',
                     role: 'user'
                 }
 
