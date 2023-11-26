@@ -36,7 +36,7 @@ const AllDeliveryMen = () => {
                                     {staff?.parcelCount}
                                 </td>
                                 <td>
-                                    <span className={`px-3 py-1 rounded font-bold ${staff?.review <= 1 ? "bg-[#ff8c5a]" : ""} ${staff?.review <= 2 && staff?.review > 1 ? "bg-[#ffb234]" : ""} ${staff?.review <= 3 && staff?.review > 2 ? "bg-[#ffd934]" : ""} ${staff?.review <= 4 && staff?.review > 3 ? "bg-[#add633]" : ""} ${staff?.review <= 5 && staff?.review > 4 ? "bg-[#a0c15a]" : ""}`}>{staff?.review}</span>
+                                    <span className={`px-3 py-1 rounded font-bold ${staff?.review <= 1 ? "bg-[#ff8c5a]" : ""} ${staff?.review <= 2 && staff?.review > 1 ? "bg-[#ffb234]" : ""} ${staff?.review <= 3 && staff?.review > 2 ? "bg-[#ffd934]" : ""} ${staff?.review <= 4 && staff?.review > 3 ? "bg-[#add633]" : ""} ${staff?.review <= 5 && staff?.review > 4 ? "bg-[#a0c15a]" : ""}`}>{staff?.review.toFixed(2)}</span>
                                 </td>
                             </tr>)
                         }

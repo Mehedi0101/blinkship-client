@@ -16,6 +16,7 @@ import ManageParcel from "../pages/admin-dashboard/ManageParcel";
 import AllDeliveryMen from "../pages/admin-dashboard/AllDeliveryMen";
 import AllUsers from "../pages/admin-dashboard/AllUsers";
 import MyDeliveryList from "../pages/deliveryman-dashboard/MyDeliveryList";
+import UserReview from "../pages/user-dashboard/UserReview";
 
 const routes = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ const routes = createBrowserRouter([
             {
                 path: 'update-parcel/:id',
                 element: <UpdateParcel></UpdateParcel>
+            },
+            {
+                path: 'user-review/:id',
+                element: <UserReview></UserReview>
             },
 
 

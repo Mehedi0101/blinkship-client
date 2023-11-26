@@ -44,6 +44,10 @@ const MyParcels = () => {
         });
     }
 
+    const handleReview = id => {
+        navigate(`/dashboard/user-review/${id}`);
+    }
+
     return (
         <div>
             <h2 className={`md:text-4xl text-3xl font-bold text-center mb-10 text-black`}>My Parcels</h2>
@@ -98,10 +102,10 @@ const MyParcels = () => {
                                     <button onClick={() => handleDeleteBooking(parcel?._id)} className="p-2 bg-red-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'pending' ? true : false}><FaTrashAlt /></button>
                                 </td>
                                 <td>
-                                    <button className="p-2 bg-fuchsia-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'delivered' ? true : false}>Review</button>
+                                    <button onClick={() => handleReview(parcel?._id)} className="p-2 bg-fuchsia-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status === 'delivered' && parcel?.rating === 'N/A' ? false : true}>Review</button>
                                 </td>
                                 <td>
-                                    <button className="p-2 bg-green-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.status !== 'delivered' ? true : false}>Pay</button>
+                                    <button className="p-2 bg-green-600 text-white rounded disabled:bg-slate-500" disabled={parcel?.rating !== 'N/A' ? false : true}>Pay</button>
                                 </td>
                             </tr>)
                         }

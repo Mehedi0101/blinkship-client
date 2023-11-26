@@ -52,7 +52,7 @@ const BookParcel = () => {
         const bookingDate = moment().format("YYYY-MM-DD");
         const deliveryManId = 'N/A';
 
-        const parcelInfo = { sender, email, senderPhone, parcelType, weight, receiver, receiverPhone, deliveryAddress, requestedDate, longitude, latitude, price, status, approximateDate, bookingDate, deliveryManId }
+        const parcelInfo = { sender, email, senderPhone, parcelType, weight, receiver, receiverPhone, deliveryAddress, requestedDate, longitude, latitude, price, status, approximateDate, bookingDate, deliveryManId, rating: 'N/A' }
 
         axiosPublic.post('/parcels', parcelInfo)
             .then(res => {
