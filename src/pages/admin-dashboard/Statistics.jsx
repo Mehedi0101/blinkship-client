@@ -16,7 +16,8 @@ const Statistics = () => {
     console.log(stats);
 
     return (
-        <div className="w-full min-h-[80vh] flex justify-center items-center">
+        <div className="w-full min-h-[80vh] flex flex-col justify-center items-center">
+        <h2 className={`md:text-4xl text-3xl font-bold text-center mb-10 text-black`}>Bookings by Date</h2>
             <BarChart
                 width={600}
                 height={400}
