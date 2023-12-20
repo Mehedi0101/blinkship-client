@@ -2,6 +2,8 @@
 
 ## **Live Link** - <a href="https://blink-ship-be2ab.web.app/">https://blink-ship-be2ab.web.app/</a>
 
+## **Server Side Repository** - <a href="https://github.com/Mehedi0101/blinkship-server">https://github.com/Mehedi0101/blinkship-server</a> 
+
 This project's client side is created by using react.js, express.js manage server-side and MongoDB is used for database. This website is delivering parcels. Firebase authentication is also implemented in this project.
 An authentic user is able to deliver his parcels to others.
 
